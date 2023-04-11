@@ -18,7 +18,7 @@ use Tymon\JWTAuth\Http\Middleware\Authenticate;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/create', function () {
@@ -30,8 +30,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::post('/register', 'RegisterController@register')->name('register');
-
 
 
 Route::post('/token', [JwtController::class, 'generateToken']);
@@ -42,6 +40,6 @@ Route::get('/dashboard', function () {
 });
 Route::middleware([Authenticate::class])->group(function () {
     // Routes that require authentication
-    
+
 });
 
